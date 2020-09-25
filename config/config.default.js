@@ -20,7 +20,7 @@ module.exports = appInfo => {
 
   config.mongoose = {
     client: {
-      url: 'mongodb://localhost/gsNews',
+      url: 'mongodb://localhost/gsNewsTest',
       options: {
         useNewUrlParser: true,
       },
