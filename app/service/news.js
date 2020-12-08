@@ -9,7 +9,7 @@ class News extends Service {
   async getNews() {
     const { ctx } = this;
     try {
-      const results = await ctx.model.News.find({}).limit(10).exec();
+      const results = await ctx.model.News.find({}).exec();
       return results;
     } catch (err) {
       ctx.body = JSON.stringify(err);

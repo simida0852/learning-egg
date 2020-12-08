@@ -17,12 +17,19 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
-
+  // default 10
+  config.bcrypt = {
+    saltRounds: 10,
+  };
+  config.jwt = {
+    secret: '123456',
+  };
   config.mongoose = {
     client: {
-      url: 'mongodb://localhost/gsNewsTest',
+      url: 'mongodb://localhost/news',
       options: {
         useNewUrlParser: true,
+        useUnifiedTopology: true,
       },
     },
   };
@@ -37,6 +44,7 @@ module.exports = appInfo => {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
+
 
   // add your user config here
   const userConfig = {
