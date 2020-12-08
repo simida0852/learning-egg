@@ -7,7 +7,7 @@ class UserAccessService extends Service {
     const { ctx, service } = this;
     const user = await service.user.findByAccount(payload.account);
     if (!user) {
-      ctx.throw(404, 'user not found');
+      ctx.throw(404, '抱歉,用户没有找到！');
     }
     const verifyPsw = await ctx.compare(payload.password, user.password);
     if (!verifyPsw) {
@@ -27,12 +27,12 @@ class UserAccessService extends Service {
     const _id = ctx.state.user.data._id;
     const user = await service.user.find(_id);
     if (!user) {
-      ctx.throw(404, '用户没有找到！');
+      ctx.throw(404, '抱歉,用户没有找到！');
     }
 
     const verifyPsw = await ctx.compare(values.oldPassword, user.password);
     if (!verifyPsw) {
-      ctx.throw(404, '用户密码错误！');
+      ctx.throw(404, '抱歉,用户密码错误！');
     } else {
       // 重置密码
       values.password = await ctx.genHash(values.password);
@@ -46,7 +46,7 @@ class UserAccessService extends Service {
     const _id = ctx.state.user.data._id;
     const user = await service.user.find(_id);
     if (!user) {
-      ctx.throw(404, '用户没有找到！');
+      ctx.throw(404, '抱歉,用户没有找到！');
     }
     user.password = 'How old are you?';
     return user;
@@ -59,7 +59,7 @@ class UserAccessService extends Service {
     const _id = ctx.state.user.data._id;
     const user = await service.user.find(_id);
     if (!user) {
-      ctx.throw(404, '用户没有找到！');
+      ctx.throw(404, '抱歉,用户没有找到！');
     }
     return service.user.findByIdAndUpdate(_id, values);
   }
@@ -72,7 +72,7 @@ class UserAccessService extends Service {
     const _id = ctx.state.user.data._id;
     const user = await service.user.find(_id);
     if (!user) {
-      ctx.throw(404, '用户没有找到！');
+      ctx.throw(404, '抱歉,用户没有找到！');
     }
     return service.user.findByIdAndUpdate(_id, { avatar: values.url });
   }
