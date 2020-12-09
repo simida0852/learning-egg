@@ -4,9 +4,7 @@ const Service = require('egg').Service;
 
 
 class User extends Service {
-  /**
-       * 创建用户
-       */
+  // 创建用户
   async create(payload) {
     const { ctx, service } = this;
     const role = await service.role.show(payload.role);
@@ -17,9 +15,7 @@ class User extends Service {
     return ctx.model.User.create(payload);
   }
 
-  /**
-       * 用户列表
-       */
+  // 用户列表
   async index(payload) {
     const { currentPage, pageSize, isPaging, search } = payload;
     let res = [];
@@ -63,26 +59,22 @@ class User extends Service {
     return { count, list: data, pageSize: Number(pageSize), currentPage: Number(currentPage) };
   }
 
-  /**
-   * 单个用户
-   */
+  // 单个用户
   async show(_id) {
     const user = await this.ctx.service.user.find(_id);
     if (!user) {
-      this.ctx.throw(404, 'user not found');
+      this.ctx.throw(404, '抱歉,没有找到用户');
     }
     return this.ctx.model.User.findById(_id).populate('role');
   }
 
 
-  /**
-   * 删除用户
-   */
+  // 删除用户
   async delete(_id) {
     const { ctx, service } = this;
     const user = await ctx.service.user.find(_id);
     if (!user) {
-      ctx.throw(404, 'user not found');
+      ctx.throw(404, '抱歉,没有找到用户');
     }
     return ctx.model.User.findByIdAndRemove(_id);
   }
@@ -91,7 +83,7 @@ class User extends Service {
     const { ctx, service } = this;
     const user = await ctx.service.user.find(_id);
     if (!user) {
-      ctx.throw(404, 'user not found');
+      ctx.throw(404, '抱歉,没有找到用户');
     }
     return ctx.model.User.findByIdAndUpdate(_id, payload);
   }

@@ -9,6 +9,7 @@ module.exports = app => {
 
   // * 新闻
   router.get('/api/v1/news', controller.news.index);
+  router.get('/api/v1/news/:id', controller.news.show);
 
 
   // * 用户
