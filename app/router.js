@@ -23,4 +23,15 @@ module.exports = app => {
   router.post('/api/v1/user/access/login', controller.userAccess.login);
   router.get('/api/v1/user/access/current', jwt, controller.userAccess.current);
 
+
+  // * 角色
+
+  router.post('/api/v1/role', controller.role.create);
+  router.delete('/api/v1/role/:id', controller.role.destroy);
+  router.put('/api/v1/role/:id', controller.role.update);
+  router.get('/api/v1/role/:id', controller.role.show);
+  router.get('/api/v1/role', controller.role.index);
+  router.delete('/api/v1/role', controller.role.removes);
+  router.resources('role', '/api/v1/role', controller.role);
+
 };

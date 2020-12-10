@@ -71,7 +71,7 @@ class User extends Service {
 
   // 删除用户
   async delete(_id) {
-    const { ctx, service } = this;
+    const { ctx } = this;
     const user = await ctx.service.user.find(_id);
     if (!user) {
       ctx.throw(404, '抱歉,没有找到用户');
@@ -80,7 +80,7 @@ class User extends Service {
   }
 
   async update(_id, payload) {
-    const { ctx, service } = this;
+    const { ctx } = this;
     const user = await ctx.service.user.find(_id);
     if (!user) {
       ctx.throw(404, '抱歉,没有找到用户');

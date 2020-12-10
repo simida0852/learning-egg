@@ -18,15 +18,13 @@ class News extends Service {
 
   // 单条新闻数据
   async show(id) {
-    console.log('id: ', typeof id);
     const { ctx } = this;
-    const res = await ctx.model.News.findById(id).exec();
-    console.log('res: ', res);
-    return res;
-    // try {
-    // } catch (err) {
-    //   ctx.body = JSON.stringify(err);
-    // }
+    try {
+      const res = await ctx.model.News.findById(id).exec();
+      return res;
+    } catch (err) {
+      ctx.body = JSON.stringify(err);
+    }
   }
 
 }
