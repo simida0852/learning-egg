@@ -34,4 +34,17 @@ module.exports = app => {
   router.delete('/api/v1/role', controller.role.removes);
   router.resources('role', '/api/v1/role', controller.role);
 
+
+  // * 上传
+  router.post('/api/v1/upload', controller.upload.create);
+  router.post('/api/v1/upload/url', controller.upload.url);
+  router.post('/api/v1/uploads', controller.upload.multiple);
+  router.delete('/api/v1/upload/:id', controller.upload.destroy);
+  // router.put('/api/v1/upload/:id', controller.upload.update)
+  router.post('/api/v1/upload/:id', controller.upload.update); // Ant Design Pro
+  router.put('/api/v1/upload/:id/extra', controller.upload.extra);
+  router.get('/api/v1/upload/:id', controller.upload.show);
+  router.get('/api/v1/upload', controller.upload.index);
+  router.delete('/api/v1/upload', controller.upload.removes);
+
 };

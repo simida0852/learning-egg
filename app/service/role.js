@@ -3,7 +3,6 @@
 'use strict';
 
 const Service = require('egg').Service;
-
 class RoleService extends Service {
   // create======================================================================================================>
   async create(payload) {
@@ -15,7 +14,7 @@ class RoleService extends Service {
     const { ctx, service } = this;
     const role = await ctx.service.role.find(_id);
     if (!role) {
-      ctx.throw(404, 'role not found');
+      ctx.throw(404, '抱歉，用户没找到！');
     }
     return ctx.model.Role.findByIdAndRemove(_id);
   }
@@ -25,16 +24,18 @@ class RoleService extends Service {
     const { ctx, service } = this;
     const role = await ctx.service.role.find(_id);
     if (!role) {
-      ctx.throw(404, 'role not found');
+      ctx.throw(404, '抱歉，用户没找到');
     }
     return ctx.model.Role.findByIdAndUpdate(_id, payload);
   }
 
   // show======================================================================================================>
   async show(_id) {
+    console.log('_id: ', _id);
     const role = await this.ctx.service.role.find(_id);
+    console.log('role: ', role);
     if (!role) {
-      this.ctx.throw(404, 'role not found');
+      this.ctx.throw(404, '抱歉，用户没找到');
     }
     return this.ctx.model.Role.findById(_id);
   }
