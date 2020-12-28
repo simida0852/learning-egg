@@ -5,7 +5,9 @@
  */
 module.exports = app => {
   const { router, controller, jwt } = app;
-  router.get('/', controller.home.index);
+
+  router.redirect('/', '/swagger-ui.html', 302); // 重定向到swagger-ui.html
+  // router.get('/', controller.home.index);
 
   // * 新闻
   router.get('/api/v1/news', controller.news.index);

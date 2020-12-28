@@ -26,5 +26,9 @@ module.exports = {
     enable: true,
     package: 'egg-jwt',
   },
-
+  // swagger文档
+  swaggerdoc: {
+    enable: true,
+    package: 'egg-swagger-doc',
+  },
 };
