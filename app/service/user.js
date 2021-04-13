@@ -6,21 +6,18 @@ const Service = require('egg').Service;
 class User extends Service {
   // 创建用户
   async create(payload) {
-    const { ctx, service } = this;
-    const role = await service.role.show(payload.role);
-    if (!role) {
-      ctx.throw(404, '角色没有找到');
-    }
+    console.log('payload: ', payload);
+    const { ctx } = this;
     payload.password = await this.ctx.genHash(payload.password);
     return ctx.model.User.create(payload);
   }
 
   // 用户列表
   async index(payload) {
-    const { currentPage, pageSize, isPaging, search } = payload;
+    const { page, pageSize, isPaging, search } = payload;
     let res = [];
     let count = 0;
-    const skip = ((Number(currentPage)) - 1) * Number(pageSize || 10);
+    const skip = ((Number(page)) - 1) * Number(pageSize || 10);
     if (isPaging) {
       if (search) {
         res = await this.ctx.model.User.find({ mobile: { $regex: search } }).populate('role').skip(skip)
@@ -56,7 +53,7 @@ class User extends Service {
       return jsonObject;
     });
 
-    return { count, list: data, pageSize: Number(pageSize), currentPage: Number(currentPage) };
+    return { count, list: data, pageSize: Number(pageSize), page: Number(page) };
   }
 
   // 单个用户
@@ -67,7 +64,6 @@ class User extends Service {
     }
     return this.ctx.model.User.findById(_id).populate('role');
   }
-
 
   // 删除用户
   async delete(_id) {

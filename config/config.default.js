@@ -49,7 +49,7 @@ module.exports = appInfo => {
     dirScanner: './app/controller', // 插件扫描的文档路径
     apiInfo: {
       title: 'swagger文档',
-      description: 'egg.js swagger-demo文档',
+      description: 'egg.js swagger 文档',
       version: '1.0.0',
     },
     consumes: [ 'application/json', 'multipart/form-data' ], // 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html

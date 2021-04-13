@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  // 测试模块
-  testResponse: {
-    message: { type: 'string' },
+  baseResponse: {
+    result: { type: 'boolean', required: true },
+    errorMessage: { type: 'string' },
   },
 };

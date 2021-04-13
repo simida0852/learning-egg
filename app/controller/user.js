@@ -1,19 +1,33 @@
 'use strict';
 
 const Controller = require('egg').Controller;
+
+/**
+  * @controller User 用户接口
+  */
+
 class UserController extends Controller {
 
-  // 登录
-  async login() {
-    const { ctx, app } = this;
-    const data = ctx.request.body;
-    const token = app.jwt.sign({
-      nickname: data.nickname,
-    }, app.config.jwt.secret);
-    ctx.body = token;
-  }
+  // // 登录
+  // async login() {
+  //   const { ctx, app } = this;
+  //   const data = ctx.request.body;
+  //   const token = app.jwt.sign({
+  //     nickname: data.nickname,
+  //   }, app.config.jwt.secret);
+  //   ctx.body = token;
+  // }
 
-  // 获取所有用户(分页/模糊)
+
+  /**
+   * @summary 用户列表
+   * @description 用户列表
+   * @router get /api/v1/users
+   * @request query number page 从第几页开始
+   * @request query number pageSize 每页多少条数据
+   * @request query string name 用户名称
+   * @response 200 queryUserResponse 成功
+   */
   async index() {
     const { ctx, service } = this;
     // 组装参数
@@ -24,7 +38,13 @@ class UserController extends Controller {
     ctx.helper.success({ ctx, res });
   }
 
-  // 获取单个用户
+  /**
+  * @summary 用户详情
+  * @description 用户详情
+  * @router get /api/v1/user/{id}
+  * @request path string *id 用户id
+  * @response 200 queryUserResponse 成功
+  */
   async show() {
     const { ctx, service } = this;
     // 组装参数
@@ -35,7 +55,13 @@ class UserController extends Controller {
     ctx.helper.success({ ctx, res });
   }
 
-  // 创建用户
+  /**
+* @summary 创建用户
+* @description 创建用户
+* @router post /api/v1/user
+* @request body userRequest *body
+* @response 200 userResponse 成功
+*/
   async create() {
     const { ctx, service } = this;
     // 组装参数
@@ -45,7 +71,14 @@ class UserController extends Controller {
     // 设置响应内容和响应状态码
     ctx.helper.success({ ctx, res });
   }
-  // 删除用户
+
+  /**
+* @summary 删除用户
+* @description 删除用户
+* @router delete /api/v1/user/{id}
+* @request path string *id 用户id
+* @response 200 userResponse 成功
+*/
   async delete() {
     const { ctx, service } = this;
     // 校验参数
@@ -55,7 +88,15 @@ class UserController extends Controller {
     // 设置响应内容和响应状态码
     ctx.helper.success({ ctx });
   }
-  // 修改用户
+
+  /**
+* @summary 修改用户
+* @description 修改用户
+* @router put /api/v1/user/{id}
+* @request path string *id 用户id
+* @request body userRequest *body
+* @response 200 userResponse 成功
+*/
   async update() {
     const { ctx, service } = this;
     // 组装参数
