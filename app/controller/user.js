@@ -8,7 +8,7 @@ const Controller = require('egg').Controller;
 
 class UserController extends Controller {
 
-  // // 登录
+  // 登录
   // async login() {
   //   const { ctx, app } = this;
   //   const data = ctx.request.body;

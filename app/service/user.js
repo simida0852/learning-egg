@@ -6,7 +6,6 @@ const Service = require('egg').Service;
 class User extends Service {
   // 创建用户
   async create(payload) {
-    console.log('payload: ', payload);
     const { ctx } = this;
     payload.password = await this.ctx.genHash(payload.password);
     return ctx.model.User.create(payload);

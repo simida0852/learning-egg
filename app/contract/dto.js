@@ -16,4 +16,10 @@ module.exports = {
     id: { type: 'string', description: 'id 唯一键' },
     groupName: { type: 'string', description: '组名' },
   },
+  news: {
+    id: { type: 'string' },
+    url: { type: 'string' },
+    title: { type: 'string' },
+    content: { type: 'string' },
+  },
 };
