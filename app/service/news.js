@@ -13,7 +13,12 @@ class News extends Service {
     let count = 0;
     const skip = ((Number(page)) - 1) * Number(pageSize || 10);
     try {
-      res = await ctx.model.News.find({ title: { $regex: searchText } }).skip(skip).limit(Number(pageSize))
+      if (searchText) {
+        res = await ctx.model.News.find({ title: { $regex: searchText } }).skip(skip).limit(Number(pageSize))
+          .sort({ createdAt: -1 })
+          .exec();
+      }
+      res = await ctx.model.News.find({}).skip(skip).limit(Number(pageSize))
         .sort({ createdAt: -1 })
         .exec();
       count = res.length;

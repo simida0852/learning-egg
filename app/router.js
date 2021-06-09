@@ -24,6 +24,9 @@ module.exports = app => {
   router.get('/api/v1/user/access/current', jwt, controller.userAccess.current);
 
 
+  // * 古诗
+  router.get('/api/v1/poems', controller.poems.index);
+
   // // * 角色
 
   // router.post('/api/v1/role', controller.role.create);
@@ -47,10 +50,6 @@ module.exports = app => {
   // router.get('/api/v1/upload', controller.upload.index);
   // router.delete('/api/v1/upload', controller.upload.removes);
 
-
-
   // router.redirect('/', '/swagger-ui.html', 302); // 重定向到swagger-ui.html
-
-
 
 };
