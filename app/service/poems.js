@@ -15,7 +15,6 @@ class Poems extends Service {
       res = await ctx.model.Poems.find({}).limit(Number(pageSize)).sort({ p_index: 1 })
         .collation({ locale: 'en_US', numericOrdering: true })
         .exec();
-      console.log('res: ', res);
       count = res.length;
       return { count, data: res, pageSize: Number(pageSize), page: Number(page) };
     } catch (err) {
