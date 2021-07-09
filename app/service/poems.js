@@ -8,7 +8,7 @@ class Poems extends Service {
      */
   async getPoems(payload) {
     const { ctx } = this;
-    const { page, pageSize = 20 } = payload;
+    const { page = 1, pageSize = 20 } = payload;
     let res = [];
     let count = 0;
     try {

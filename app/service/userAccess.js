@@ -9,9 +9,11 @@ class UserAccessService extends Service {
     if (!user) {
       ctx.throw(404, '抱歉,用户没有找到！');
     }
+
     const verifyPsw = await ctx.compare(payload.password, user.password);
+
     if (!verifyPsw) {
-      ctx.throw(404, 'user password is error');
+      ctx.throw(404, '抱歉,用户密码错误！');
     }
     // 生成Token令牌
     return { token: await service.actionToken.apply(user._id) };

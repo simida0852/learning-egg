@@ -8,9 +8,8 @@ class News extends Service {
      */
   async getNews(payload) {
     const { ctx } = this;
-    const { page, pageSize, searchText } = payload;
+    const { page = 1, pageSize = 20, searchText } = payload;
     let res = [];
-    let count = 0;
     const skip = ((Number(page)) - 1) * Number(pageSize || 10);
     try {
       if (searchText) {
@@ -21,8 +20,7 @@ class News extends Service {
       res = await ctx.model.News.find({}).skip(skip).limit(Number(pageSize))
         .sort({ createdAt: -1 })
         .exec();
-      count = res.length;
-      return { count, list: res, pageSize: Number(pageSize), page: Number(page) };
+      return { list: res, pageSize: Number(pageSize), page: Number(page) };
     } catch (err) {
       ctx.body = JSON.stringify(err);
     }
