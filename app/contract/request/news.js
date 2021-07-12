@@ -1,11 +1,12 @@
 'use strict';
 
 const newsDocBase = {
-  searchText: { type: 'string', required: false, description: '检索文本' },
+  title: { type: 'string', required: true, description: '新闻标题' },
+  content: { type: 'string', required: true, description: '新闻内容' },
 };
 
 
 module.exports = {
-  userRequest: newsDocBase,
-  userResponse: newsDocBase,
+  newsRequest: newsDocBase,
+  newsResponse: newsDocBase,
 };

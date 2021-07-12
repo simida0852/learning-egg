@@ -8,7 +8,7 @@ class News extends Service {
      */
   async getNews(payload) {
     const { ctx } = this;
-    const { page = 1, pageSize = 20, searchText } = payload;
+    const { page = 1, pageSize = 99999, searchText } = payload;
     let res = [];
     const skip = ((Number(page)) - 1) * Number(pageSize || 10);
     try {
@@ -36,6 +36,10 @@ class News extends Service {
     }
   }
 
+  async create(payload) {
+    const { ctx } = this;
+    return ctx.model.News.create({ ...payload });
+  }
 }
 
 module.exports = News;

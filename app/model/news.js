@@ -4,7 +4,6 @@ module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
   const NewsSchema = new Schema({
-    _id: String,
     url: String,
     title: String,
     content: String,

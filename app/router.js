@@ -9,8 +9,9 @@ module.exports = app => {
   // router.get('/', controller.home.index);
 
   // // * 新闻
-  router.get('/api/v1/news', controller.news.index);
-  // router.get('/api/v1/news/:id', controller.news.show);
+  router.get('/api/v1/news', jwt, controller.news.index);
+  router.get('/api/v1/news/:id', jwt, controller.news.show);
+  router.post('/api/v1/news', jwt, controller.news.create);
 
 
   // * 用户

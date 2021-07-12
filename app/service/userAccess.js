@@ -15,6 +15,7 @@ class UserAccessService extends Service {
     if (!verifyPsw) {
       ctx.throw(404, '抱歉,用户密码错误！');
     }
+
     // 生成Token令牌
     return { token: await service.actionToken.apply(user._id) };
   }
