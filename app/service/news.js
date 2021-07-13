@@ -1,7 +1,6 @@
 'use strict';
 
 const Service = require('egg').Service;
-const ObjectID = require('mongodb').ObjectID;
 class News extends Service {
   /**
      * 获取新闻数据
