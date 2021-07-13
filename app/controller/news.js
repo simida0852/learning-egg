@@ -53,6 +53,23 @@ class NewsController extends Controller {
     ctx.helper.success({ ctx, res });
   }
 
+  /**
+* @summary 删除新闻
+* @description 删除新闻
+* @router delete /api/v1/news/{id}
+* @request path string *id 新闻id
+* @response 200 newsResponse 成功
+*/
+  async delete() {
+    const { ctx, service } = this;
+    // 校验参数
+    const { id } = ctx.params;
+    // 调用 Service 进行业务处理
+    const res = await service.news.delete(id);
+    // 设置响应内容和响应状态码
+    ctx.helper.success({ ctx, res });
+  }
+
 }
 
 module.exports = NewsController;

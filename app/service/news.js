@@ -1,7 +1,7 @@
 'use strict';
 
 const Service = require('egg').Service;
-
+const ObjectID = require('mongodb').ObjectID;
 class News extends Service {
   /**
      * 获取新闻数据
@@ -21,8 +21,8 @@ class News extends Service {
         .sort({ createdAt: -1 })
         .exec();
       return { list: res, pageSize: Number(pageSize), page: Number(page) };
-    } catch (err) {
-      ctx.body = JSON.stringify(err);
+    } catch (error) {
+      ctx.body = JSON.stringify(error);
     }
   }
   // 单条新闻数据
@@ -31,15 +31,27 @@ class News extends Service {
     try {
       const res = await ctx.model.News.findById(id).exec();
       return res;
-    } catch (err) {
-      ctx.body = JSON.stringify(err);
+    } catch (error) {
+      ctx.body = JSON.stringify(error);
     }
   }
-
+  // 添加新闻
   async create(payload) {
     const { ctx } = this;
     return ctx.model.News.create({ ...payload });
   }
+  // 删除新闻
+  async delete(_id) {
+    const { ctx } = this;
+    try {
+      const res = ctx.model.News.findOneAndRemove({ _id });
+      return res;
+    } catch (error) {
+      ctx.body = JSON.stringify(error);
+    }
+
+  }
 }
+
 
 module.exports = News;
