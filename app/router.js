@@ -8,11 +8,12 @@ module.exports = app => {
 
   // router.get('/', controller.home.index);
 
-  // // * 新闻
+  // * 新闻
   router.get('/api/v1/news', jwt, controller.news.index);
   router.get('/api/v1/news/:id', jwt, controller.news.show);
   router.post('/api/v1/news', jwt, controller.news.create);
   router.delete('/api/v1/news/:id', jwt, controller.news.delete);
+  router.put('/api/v1/news/:id', jwt, controller.news.update);
 
 
   // * 用户

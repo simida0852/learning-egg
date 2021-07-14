@@ -70,6 +70,26 @@ class NewsController extends Controller {
     ctx.helper.success({ ctx, res });
   }
 
+  /**
+* @summary 修改新闻
+* @description 修改新闻
+* @router put /api/v1/news/{id}
+* @request path string *id 新闻id
+* @request body newsRequest *body
+* @response 200 newsResponse 成功
+*/
+  async update() {
+    const { ctx, service } = this;
+    // 组装参数
+    const { id } = ctx.params;
+    const payload = ctx.request.body || {};
+    // 调用 Service 进行业务处理
+    await service.news.update(id, payload);
+    // 设置响应内容和响应状态码
+    ctx.helper.success({ ctx });
+  }
+
+
 }
 
 module.exports = NewsController;

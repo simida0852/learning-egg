@@ -2,9 +2,7 @@
 
 const Service = require('egg').Service;
 class News extends Service {
-  /**
-     * 获取新闻数据
-     */
+  // 获取新闻数据
   async getNews(payload) {
     const { ctx } = this;
     const { page = 1, pageSize = 99999, searchText } = payload;
@@ -24,6 +22,7 @@ class News extends Service {
       ctx.body = JSON.stringify(error);
     }
   }
+
   // 单条新闻数据
   async show(id) {
     const { ctx } = this;
@@ -34,11 +33,14 @@ class News extends Service {
       ctx.body = JSON.stringify(error);
     }
   }
+
   // 添加新闻
   async create(payload) {
     const { ctx } = this;
     return ctx.model.News.create({ ...payload });
   }
+
+
   // 删除新闻
   async delete(_id) {
     const { ctx } = this;
@@ -48,7 +50,18 @@ class News extends Service {
     } catch (error) {
       ctx.body = JSON.stringify(error);
     }
+  }
 
+  // 更新新闻
+  async update(_id, payload) {
+    const { ctx } = this;
+    try {
+      const res = ctx.model.News.findByIdAndUpdate(_id, payload);
+      return res;
+    } catch (error) {
+      ctx.body = JSON.stringify(error);
+
+    }
   }
 }
 
