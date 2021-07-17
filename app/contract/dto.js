@@ -22,4 +22,12 @@ module.exports = {
     title: { type: 'string' },
     content: { type: 'string' },
   },
+  poems: {
+    index: { type: 'string', description: '序号' },
+    name: { type: 'string', description: '名称' },
+    content: { type: 'string', description: '内容' },
+    author: { type: 'string', description: '作者名' },
+    dynasty: { type: 'string', description: '朝代' },
+    img_url: { type: 'string', description: '图片地址' },
+  },
 };

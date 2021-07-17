@@ -24,8 +24,13 @@ class NewsController extends Controller {
     ctx.helper.success({ ctx, res });
   }
 
-
-  // 获取新闻详情
+  /**
+ * @summary 新闻详情
+ * @description 新闻详情
+ * @router get /api/v1/news/{id}
+ * @request path string *id 新闻id
+ * @response 200 queryNewsResponse 成功
+ */
   async show() {
     const { ctx, service } = this;
     // 组装参数
