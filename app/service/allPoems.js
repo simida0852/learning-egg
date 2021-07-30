@@ -12,7 +12,6 @@ class AllPoems extends Service {
     let resData = []
     let count = 0;
     let skip = ((Number(page || 1)) - 1) * Number(pageSize || 5)
-
     try {
       resData = await ctx.model.AllPoems.find({}).skip(skip).limit(Number(pageSize)).sort()
         .collation({ locale: 'en_US', numericOrdering: true })
