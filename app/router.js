@@ -22,7 +22,7 @@ module.exports = app => {
   router.post('/api/v1/user', controller.user.create);
   router.delete('/api/v1/user/:id', controller.user.delete);
   router.put('/api/v1/user/:id', controller.user.update);
- // * 登录
+  // * 登录
   router.post('/api/v1/user/access/login', controller.userAccess.login);
   router.get('/api/v1/user/access/current', jwt, controller.userAccess.current);
 
@@ -32,6 +32,10 @@ module.exports = app => {
   router.get('/api/v1/poems/:id', controller.poems.show);
 
   // // * 角色
+
+  // * 全唐诗
+  router.get('/api/v1/allPoems', controller.allPoems.index);
+
 
   // router.post('/api/v1/role', controller.role.create);
   // router.delete('/api/v1/role/:id', controller.role.destroy);

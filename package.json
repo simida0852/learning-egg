@@ -16,6 +16,7 @@
     "egg-scripts": "^2.13.0",
     "egg-swagger-doc": "^2.3.2",
     "egg-validate": "^2.0.2",
+    "hanzi-tools": "^1.2.25",
     "image-downloader": "^4.0.1",
     "moment": "^2.29.1",
     "stream-to-array": "^2.3.0",

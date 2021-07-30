@@ -26,7 +26,8 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      url: 'mongodb://localhost/news',
+      // url: 'mongodb://localhost/news',
+      url: 'mongodb://localhost/allPoems',
       options: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -38,7 +39,7 @@ module.exports = appInfo => {
       enable: false,
       ignoreJSON: true,
     },
-    domainWhiteList: [ 'http://localhost:7001' ],
+    domainWhiteList: ['http://localhost:7001'],
   };
   config.cors = {
     origin: '*',
@@ -52,9 +53,9 @@ module.exports = appInfo => {
       description: 'egg.js swagger 文档',
       version: '1.0.0',
     },
-    consumes: [ 'application/json', 'multipart/form-data' ], // 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html
-    produces: [ 'application/json', 'multipart/form-data' ], // 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回
-    schemes: [ 'http', 'https' ],
+    consumes: ['application/json', 'multipart/form-data'], // 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html
+    produces: ['application/json', 'multipart/form-data'], // 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回
+    schemes: ['http', 'https'],
     routerMap: true, // 是否自动生成route
     enable: true,
   };
