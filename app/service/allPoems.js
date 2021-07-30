@@ -1,6 +1,5 @@
 'use strict';
 const Service = require('egg').Service;
-const simplify = require("hanzi-tools").simplify;
 
 class AllPoems extends Service {
   /**
