@@ -34,7 +34,7 @@ module.exports = app => {
   // // * 角色
 
   // * 全唐诗
-  router.get('/api/v1/allPoems', controller.allPoems.index);
+  // router.get('/api/v1/allPoems', controller.allPoems.index);
 
 
   // router.post('/api/v1/role', controller.role.create);

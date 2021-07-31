@@ -26,8 +26,8 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      // url: 'mongodb://localhost/news',
-      url: 'mongodb://localhost/allPoems',
+      url: 'mongodb://localhost/news',
+      // url: 'mongodb://localhost/allPoems',
       options: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
