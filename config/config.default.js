@@ -12,12 +12,12 @@ module.exports = appInfo => {
    **/
   const config = exports = {};
 
-  config.cluster = {
-    listen: {
-      port: 7001,
-      hostname: '172.19.131.203', 
-    }
-  }
+  // config.cluster = {
+  //   listen: {
+  //     port: 7001,
+  //     hostname: '172.19.131.203', 
+  //   }
+  // }
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1600312065747_9329';
 
@@ -32,7 +32,7 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      url: 'mongodb://localhost:1210/news',
+      url: 'mongodb://localhost/news',
       // url: 'mongodb://localhost/allPoems',
       options: {
         useNewUrlParser: true,
