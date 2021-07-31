@@ -32,7 +32,7 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      url: 'mongodb://localhost/news',
+      url: 'mongodb://localhost:1210/news',
       // url: 'mongodb://localhost/allPoems',
       options: {
         useNewUrlParser: true,
