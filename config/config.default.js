@@ -12,7 +12,7 @@ module.exports = appInfo => {
    **/
   const config = exports = {};
 
-  exports.cluster = {
+  config.cluster = {
     listen: {
       port: 7001,
       hostname: '172.19.131.203', 
